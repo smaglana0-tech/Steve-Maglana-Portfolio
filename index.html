@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steve Maglana — Systems, Automation & Marketing VA</title>
+<meta name="description" content="Steve Maglana — Virtual Assistant specializing in automation, email/SMS marketing, and lead conversion systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1611;
+    --bg-deep:#221A14;
+    --bg-panel:#2E241C;
+    --bg-panel-2:#362A20;
+    --cream:#F4ECDD;
+    --cream-dim:#C9BEA9;
+    --muted:#9C9080;
+    --sage:#8A9670;
+    --sage-dim:#5E6B4B;
+    --amber:#C9903F;
+    --amber-bright:#E4B061;
+    --line:rgba(244,236,221,0.12);
+    --radius:18px;
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--cream);
+    font-family:'Manrope', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--cream);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--amber-bright);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--amber-bright);
+    box-shadow:0 0 0 4px rgba(228,176,97,0.18);
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(34,26,20,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-name{
+    font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-0.01em;
+  }
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .nav-links a{
+    font-size:13.5px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;
+    text-decoration:none;color:var(--cream-dim);transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--amber-bright);}
+  .nav-cta{
+    font-size:13px;font-weight:700;text-decoration:none;
+    color:var(--ink);background:var(--amber-bright);
+    padding:9px 18px;border-radius:999px;
+    transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--cream);transform:translateY(-1px);}
+  .nav-toggle{display:none;}
+
+  /* ---------- WIRE / SIGNATURE ELEMENT ---------- */
+  .flow-rail{
+    position:absolute;left:50%;top:0;bottom:0;
+    width:2px;transform:translateX(-1px);
+    pointer-events:none;z-index:0;
+  }
+  .flow-rail svg{position:sticky;top:0;height:100vh;width:2px;}
+
+  .node{
+    position:relative;z-index:2;
+    width:13px;height:13px;border-radius:50%;
+    background:var(--bg-panel);
+    border:2px solid var(--muted);
+    margin:0 auto 22px;
+    transition:border-color .5s ease, background .5s ease, box-shadow .5s ease;
+  }
+  .node.lit{
+    border-color:var(--amber-bright);
+    background:var(--amber-bright);
+    box-shadow:0 0 0 6px rgba(228,176,97,0.16);
+  }
+
+  section{position:relative;padding:96px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .section-head h2{font-size:clamp(28px,4vw,40px);margin-top:14px;}
+  .section-head p{color:var(--cream-dim);margin-top:14px;font-size:16.5px;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 100px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;
+  }
+  .hero-copy .eyebrow{margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(40px,6vw,68px);
+    line-height:1.02;
+    font-weight:600;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--sage);
+  }
+  .hero-tag{
+    margin-top:22px;font-size:19px;color:var(--cream-dim);max-width:480px;line-height:1.55;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:999px;
+    font-size:14.5px;font-weight:700;text-decoration:none;
+    transition:transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{background:var(--amber-bright);color:var(--ink);}
+  .btn-primary:hover{background:var(--cream);transform:translateY(-2px);}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--amber-bright);color:var(--amber-bright);}
+
+  .hero-photo{
+    position:relative;justify-self:center;
+  }
+  .hero-photo .frame{
+    width:100%;max-width:340px;aspect-ratio:3/3.6;
+    border-radius:26px;overflow:hidden;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  .hero-photo .tag-chip{
+    position:absolute;bottom:-18px;left:-18px;
+    background:var(--sage);color:var(--ink);
+    font-weight:700;font-size:13px;
+    padding:10px 16px;border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+  }
+  .hero-photo .tag-chip.two{
+    bottom:auto;top:-16px;right:-10px;left:auto;
+    background:var(--amber-bright);
+  }
+
+  /* ---------- FOCUS STRIP ---------- */
+  .focus{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--bg-panel);
+  }
+  .focus .wrap{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    padding:0;
+  }
+  .focus-item{
+    padding:38px 32px;border-right:1px solid var(--line);
+  }
+  .focus-item:last-child{border-right:none;}
+  .focus-item .k{font-family:'Fraunces',serif;font-size:26px;color:var(--amber-bright);font-weight:600;}
+  .focus-item p{margin-top:8px;color:var(--cream-dim);font-size:14.5px;line-height:1.55;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .service-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px 28px;
+    position:relative;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .service-card:hover{transform:translateY(-4px);border-color:var(--amber);}
+  .service-card .num{
+    font-family:'Fraunces',serif;font-size:14px;color:var(--muted);
+    letter-spacing:0.05em;
+  }
+  .service-card h3{font-size:21px;margin-top:16px;}
+  .service-card p{color:var(--cream-dim);margin-top:12px;font-size:15px;line-height:1.6;}
+  .service-card .stack{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:7px;
+  }
+  .pill{
+    font-size:12px;font-weight:600;color:var(--sage);
+    border:1px solid var(--sage-dim);
+    padding:5px 11px;border-radius:999px;
+    background:rgba(138,150,112,0.08);
+  }
+  .service-card.flagship{border-color:var(--amber);background:linear-gradient(160deg, var(--bg-panel-2), var(--bg-panel));}
+  .service-card.flagship .pill{color:var(--amber-bright);border-color:var(--amber);background:rgba(228,176,97,0.08);}
+
+  /* ---------- TOOLS ---------- */
+  .tools-group{margin-bottom:28px;}
+  .tools-group h4{
+    font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:14px;
+  }
+  .tools-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .tool-chip{
+    font-size:13.5px;font-weight:600;color:var(--cream);
+    background:var(--bg-panel);border:1px solid var(--line);
+    padding:8px 15px;border-radius:10px;
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{max-width:760px;margin:0 auto;}
+  .tl-item{
+    display:grid;grid-template-columns:150px 1fr;gap:28px;
+    padding:26px 0;border-top:1px solid var(--line);
+  }
+  .tl-item:first-child{border-top:none;}
+  .tl-date{
+    font-size:13px;font-weight:700;color:var(--amber-bright);
+    letter-spacing:0.03em;padding-top:3px;
+  }
+  .tl-role h3{font-size:19px;}
+  .tl-role .org{color:var(--sage);font-weight:600;font-size:14.5px;margin-top:2px;}
+  .tl-role p{color:var(--cream-dim);font-size:14.5px;margin-top:10px;line-height:1.6;}
+  .tl-current{
+    display:inline-block;margin-left:10px;font-size:11px;font-weight:700;
+    color:var(--ink);background:var(--sage);padding:3px 9px;border-radius:999px;
+    letter-spacing:0.04em;vertical-align:middle;
+  }
+
+  .edu{
+    max-width:760px;margin:56px auto 0;padding-top:32px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  }
+  .edu h4{font-size:16px;font-weight:700;font-family:'Manrope',sans-serif;}
+  .edu p{color:var(--cream-dim);font-size:14.5px;margin-top:4px;}
+  .edu .yr{color:var(--muted);font-size:14px;white-space:nowrap;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+  .contact h2{font-size:clamp(30px,5vw,46px);}
+  .contact p.lead{color:var(--cream-dim);margin-top:16px;font-size:17px;max-width:520px;margin-left:auto;margin-right:auto;}
+  .contact-actions{display:flex;justify-content:center;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .contact-meta{
+    margin-top:52px;padding-top:28px;border-top:1px solid var(--line);
+    display:flex;justify-content:center;gap:28px;flex-wrap:wrap;
+    color:var(--muted);font-size:13.5px;
+  }
+  footer.foot{
+    text-align:center;padding:22px 0;color:var(--muted);font-size:12.5px;
+    background:var(--bg-panel);
+  }
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{order:-1;max-width:260px;margin:0 auto 12px;}
+    .services-grid{grid-template-columns:1fr;}
+    .focus .wrap{grid-template-columns:1fr;}
+    .focus-item{border-right:none;border-bottom:1px solid var(--line);}
+    .focus-item:last-child{border-bottom:none;}
+    .nav-links{display:none;}
+    .tl-item{grid-template-columns:1fr;gap:6px;}
+    .edu{flex-direction:column;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .service-card,.btn,.nav-cta{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Steve Maglana</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:smaglana0@gmail.com">Let's talk</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="node-hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Virtual Assistant · Davao City, PH</div>
+        <h1>Systems, automation<br>&amp; <em>marketing</em>, handled.</h1>
+        <p class="hero-tag">Nearly 8 years turning manual busywork into automated systems — and cold leads into booked revenue. I build the backend so your business runs whether or not you're the one clicking.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:smaglana0@gmail.com">Start a conversation</a>
+          <a class="btn btn-ghost" href="#services">See what I do</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="frame">
+          <img src="assets/steve.jpg" alt="Steve Maglana">
+        </div>
+        <div class="tag-chip">Automation-first</div>
+        <div class="tag-chip two">Revenue-focused</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS STRIP -->
+<div class="focus">
+  <div class="wrap">
+    <div class="focus-item">
+      <div class="k">8 yrs</div>
+      <p>Across operations, sales, recruitment, and digital marketing — inside startup and high-growth environments.</p>
+    </div>
+    <div class="focus-item">
+      <div class="k">Automation-built</div>
+      <p>GoHighLevel, Zapier, and n8n workflows connecting CRM, marketing, and support into one system.</p>
+    </div>
+    <div class="focus-item">
+      <div class="k">Full-funnel</div>
+      <p>From the first comment or click, through the email flow, to a booked call or repeat customer.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">What I do</div>
+      <h2>Three ways I plug into your business</h2>
+      <p>The two I lean on hardest are automation and marketing — everything else I do supports those.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card flagship">
+        <div class="num">01 — Flagship</div>
+        <h3>Automation &amp; Systems</h3>
+        <p>I build and maintain the CRM and marketing automations that keep a business running without manual follow-up — funnels, landing pages, opt-ins, workflows, and the SOPs that make it repeatable for a team.</p>
+        <div class="stack">
+          <span class="pill">GoHighLevel</span>
+          <span class="pill">Zapier</span>
+          <span class="pill">n8n</span>
+          <span class="pill">SOP Design</span>
+        </div>
+      </div>
+      <div class="service-card flagship">
+        <div class="num">02 — Flagship</div>
+        <h3>Email &amp; SMS Marketing</h3>
+        <p>Campaigns and flows — welcome, abandoned checkout, browse abandonment, post-purchase, winback — built to be read, clicked, and tracked against real open, click, and revenue numbers, not left running untouched.</p>
+        <div class="stack">
+          <span class="pill">Klaviyo</span>
+          <span class="pill">Mailchimp</span>
+          <span class="pill">Flodesk</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="num">03</div>
+        <h3>Social &amp; Lead Conversion</h3>
+        <p>Comment and DM management through ManyChat, scheduling through Publer, and Canva/CapCut content — built to move an interested follower to a booked call, not just a like.</p>
+        <div class="stack">
+          <span class="pill">ManyChat</span>
+          <span class="pill">Publer</span>
+          <span class="pill">Canva / CapCut</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="background:var(--bg-panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">Toolbox</div>
+      <h2>Platforms I work in daily</h2>
+    </div>
+    <div class="tools-group">
+      <h4>CRM, Automation &amp; Marketing</h4>
+      <div class="tools-row">
+        <span class="tool-chip">GoHighLevel</span>
+        <span class="tool-chip">HubSpot</span>
+        <span class="tool-chip">Salesforce</span>
+        <span class="tool-chip">Klaviyo</span>
+        <span class="tool-chip">Mailchimp</span>
+        <span class="tool-chip">Flodesk</span>
+        <span class="tool-chip">Zapier</span>
+        <span class="tool-chip">n8n</span>
+        <span class="tool-chip">ManyChat</span>
+      </div>
+    </div>
+    <div class="tools-group">
+      <h4>Content, Video &amp; Design</h4>
+      <div class="tools-row">
+        <span class="tool-chip">Canva</span>
+        <span class="tool-chip">CapCut</span>
+        <span class="tool-chip">Editz</span>
+        <span class="tool-chip">Opus Clips</span>
+        <span class="tool-chip">Beefree</span>
+        <span class="tool-chip">Publer</span>
+      </div>
+    </div>
+    <div class="tools-group">
+      <h4>Web &amp; Commerce</h4>
+      <div class="tools-row">
+        <span class="tool-chip">Shopify</span>
+        <span class="tool-chip">ShowIt</span>
+        <span class="tool-chip">Typeform</span>
+        <span class="tool-chip">GitHub Pages</span>
+        <span class="tool-chip">HTML / CSS</span>
+        <span class="tool-chip">Stripe</span>
+      </div>
+    </div>
+    <div class="tools-group">
+      <h4>Support, Data &amp; Operations</h4>
+      <div class="tools-row">
+        <span class="tool-chip">Freshdesk</span>
+        <span class="tool-chip">Zendesk</span>
+        <span class="tool-chip">Google Workspace</span>
+        <span class="tool-chip">Microsoft Office</span>
+        <span class="tool-chip">Python (pandas, openpyxl)</span>
+        <span class="tool-chip">Trello / ClickUp / Notion</span>
+        <span class="tool-chip">Claude AI / ChatGPT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="justify-content:center;">Track record</div>
+      <h2>Where this experience comes from</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2021 — Present</div>
+        <div class="tl-role">
+          <h3>Freelance Digital Marketer &amp; Systems Integrator <span class="tl-current">Current</span></h3>
+          <div class="org">Self-Employed</div>
+          <p>Built responsive client websites and multi-step sales funnels, automated GoHighLevel workflows, standardized recurring operations with Python, and documented repeatable systems across multiple client brands.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Sep — Dec 2025</div>
+        <div class="tl-role">
+          <h3>Officer-in-Charge — Sales, Customer Service &amp; Logistics</h3>
+          <div class="org">Kash Khan Official</div>
+          <p>Oversaw daily sales operations and order fulfillment, coordinated cross-functional teams, and reported on KPIs.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Feb 2024 — Sep 2025</div>
+        <div class="tl-role">
+          <h3>Sales &amp; Marketing Associate</h3>
+          <div class="org">Wealth Creators Live</div>
+          <p>Executed digital and direct sales strategies, managed marketing campaigns and social promotions, and supported funnel optimization and conversion tracking.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jan 2023 — Feb 2024</div>
+        <div class="tl-role">
+          <h3>Recruitment Specialist</h3>
+          <div class="org">Hireyapp — CRERTIH Inc.</div>
+          <p>Ran full-cycle recruitment, maintained applicant tracking systems, and improved turnaround time and quality of hires.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jul 2021 — Jan 2023</div>
+        <div class="tl-role">
+          <h3>Business Development Manager / Sales Closer</h3>
+          <div class="org">OOMA Inc.</div>
+          <p>Led sales closing and partnership development, generated and qualified leads, and negotiated and closed high-value deals.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jun 2020 — Jan 2021</div>
+        <div class="tl-role">
+          <h3>General Virtual Assistant</h3>
+          <div class="org">Movado Inc.</div>
+          <p>Managed email, calendars, and CRM systems, prepared reports, and supported customer service and marketing tasks.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jul 2018 — Jun 2020</div>
+        <div class="tl-role">
+          <h3>Client Retention Specialist</h3>
+          <div class="org">AT&amp;T</div>
+          <p>Maintained long-term client relationships, resolved billing and service issues, and consistently met performance targets.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div>
+        <h4>Bachelor of Science in Business Administration</h4>
+        <p>Rizal Memorial College Inc.</p>
+      </div>
+      <div class="yr">2014 — 2021</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Get in touch</div>
+    <h2 style="margin-top:14px;">Let's automate the busywork out.</h2>
+    <p class="lead">Open to freelance and contract work — part-time or full-time. If it involves systems, marketing, or turning attention into revenue, I'd like to hear about it.</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="mailto:smaglana0@gmail.com">smaglana0@gmail.com</a>
+      <a class="btn btn-ghost" href="tel:+639766399293">+63 976 639 9293</a>
+    </div>
+    <div class="contact-meta">
+      <span>Davao City, Philippines</span>
+      <span>Available for freelance &amp; contract roles</span>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  © 2026 Steve Maglana. Built &amp; hosted on GitHub Pages.
+</footer>
+
+</body>
+</html>
